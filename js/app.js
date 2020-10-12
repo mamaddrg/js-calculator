@@ -17,7 +17,7 @@ let history = '';
 let expression = '';
 let result = 0;
 let lastResult = 0;
-let lastOperand = '';
+let lastOperand = '+';
 let currentInput = '';
 
 
@@ -42,22 +42,22 @@ btnNumbers.forEach(item => {
 btnOperands.forEach(item => {
   item.addEventListener('click', () => {
 
-    // expression cant start with an opearator
-    if (currentInput.length === 0 || +currentInput === 0) return;
+    if (currentInput === '0') {
+      // get the last character of expression
+      const lastChar = expression.charAt(expression.length - 1);
 
-    // expresson can't contain 2 operators without a number between
-    if (+currentInput === 0 && OPERATORS.includes(expression.charAt(expression.length - 1))) {
-      // the last character is already an operator
-      // the new one will be replaced to last operator
+      // expresson can't contain 2 operators without a number between
+      if (OPERATORS.includes(lastChar)) {
 
-      // remove last character, which is the old operator
-      expression = expression.slice(0, -1);
+        // remove last character to add the new one
+        expression = expression.slice(0, -1);
 
-      // add new operator to expression
-      expression += item.textContent;
+        // add new operator to expression
+        expression += item.textContent;
 
-      showExpr.textContent = expression;
-      return;
+        showExpr.textContent = expression;
+        return;
+      }
     }
 
     result = computer(lastResult, currentInput, lastOperand);
