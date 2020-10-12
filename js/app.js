@@ -10,7 +10,10 @@ const btnEqual = document.querySelector('#btn-equal');
 
 btnNumbers.forEach(item => {
   item.addEventListener('click', () => {
+
     console.log(item.textContent);
+
+    showExpr.textContent += item.textContent;
   })
 });
 
