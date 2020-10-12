@@ -6,6 +6,7 @@ const showResult = document.querySelector('.result');
 
 const btnNumbers = document.querySelectorAll('[data-number]');
 const btnOperands = document.querySelectorAll('[data-operand]');
+const btnPoint = document.querySelector('#btn-point')
 
 const btnReset = document.querySelector('#btn-reset');
 const btnClear = document.querySelector('#btn-clear');
@@ -27,17 +28,9 @@ btnNumbers.forEach(item => {
     if (+item.textContent === 0 && +currentInput === 0 && currentInput.length === 1) 
       return;
 
-    // numbers can't contain multiple points
-    if (item.textContent === '.' && currentInput.includes('.')) 
-      return;
-
     // Will remove default zero which is shown when input is empty
     if (+item.textContent > 0 && !currentInput.includes('.') && +currentInput === 0)
       currentInput = '';
-
-    // Will add a default zero in float numbers if user forgot to add
-    if (item.textContent === '.' && currentInput.length === 0)
-      currentInput = '0';
 
     currentInput += item.textContent;
 
@@ -77,6 +70,18 @@ btnOperands.forEach(item => {
     showExpr.textContent = expression;
     showResult.textContent = result;
   })
+});
+
+btnPoint.addEventListener('click', () => {
+
+  // numbers can't contain multiple points
+  if (currentInput.includes('.')) return;
+
+  // Will add a default zero in float numbers if user forgot to add
+  if (currentInput.length === 0) currentInput = '0.';
+  else currentInput += '.'
+
+  showResult.textContent = currentInput;
 });
 
 btnReset.addEventListener('click', () => {
