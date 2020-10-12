@@ -13,6 +13,8 @@
   --font-size-x-small: 12px;
   --font-size-large: 18px;
   --font-size-x-large: 20px;
+  --font-size-expression: 32px;
+  --font-size-result: 36px;
   --font-size-btns: 30px;
   --grey: #bdc3c7;
   --gray-dark: #6c7a89;
@@ -81,13 +83,13 @@ button:hover {
 .display .expression {
   text-align: end;
   color: var(--grey);
-  font-size: var(--font-size-large);
+  font-size: var(--font-size-expression);
 }
 
 .display .result {
   text-align: end;
   color: var(--creame);
-  font-size: var(--font-size-x-large);
+  font-size: var(--font-size-result);
 }
 
 .keys {
