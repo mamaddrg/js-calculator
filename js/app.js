@@ -50,7 +50,14 @@ btnReset.addEventListener('click', () => {
 });
 
 btnClear.addEventListener('click', () => {
-  console.log('clear btn clicked!');
+  
+  if (expression.length > 0)
+    expression = expression.slice(0, expression.length - 1);
+
+  if (expression.length === 0)
+    expression = '0'; 
+
+  showExpr.textContent = expression;
 });
 
 btnEqual.addEventListener('click', () => {
