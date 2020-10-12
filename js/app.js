@@ -42,7 +42,11 @@ btnOperands.forEach(item => {
 });
 
 btnReset.addEventListener('click', () => {
-  console.log('reset btn clicked!');
+  
+  expression = '0';
+  result = '0'
+
+  showExpr.textContent = expression;
 });
 
 btnClear.addEventListener('click', () => {
