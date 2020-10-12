@@ -1,3 +1,5 @@
+import computer from "./computer.js";
+
 const showHistory = document.querySelector('.history');
 const showExpr = document.querySelector('.expression');
 const showResult = document.querySelector('.result');
@@ -64,34 +66,7 @@ btnOperands.forEach(item => {
       return;
     }
 
-    switch (lastOperand) {
-      case '+':
-        result = lastResult + +currentInput;
-        break;
-      
-      case '-':
-        result = lastResult - +currentInput;
-        break;  
-    
-      case '×':
-        result = lastResult * +currentInput;
-        break;
-
-      case '÷':
-        result = lastResult / +currentInput;
-        break;
-
-      case '%':
-        result = lastResult % +currentInput;
-        break;
-
-      case '':
-        result = +currentInput;
-        break;
-      
-      default:
-        break;
-    }
+    result = computer(lastResult, currentInput, lastOperand);
 
     lastResult = result;
     lastOperand = item.textContent;
@@ -130,34 +105,7 @@ btnClear.addEventListener('click', () => {
 
 btnEqual.addEventListener('click', () => {
   
-  switch (lastOperand) {
-    case '+':
-      result = lastResult + +currentInput;
-      break;
-    
-    case '-':
-      result = lastResult - +currentInput;
-      break;  
-  
-    case '×':
-      result = lastResult * +currentInput;
-      break;
-
-    case '÷':
-      result = lastResult / +currentInput;
-      break;
-
-    case '%':
-      result = lastResult % +currentInput;
-      break;
-
-    case '':
-      result = +currentInput;
-      break;
-    
-    default:
-      break;
-  }
+  result = computer(lastResult, currentInput, lastOperand);
 
   expression = `${expression}${currentInput}=`;
   showExpr.textContent = '';
