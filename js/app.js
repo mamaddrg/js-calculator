@@ -26,6 +26,9 @@ btnNumbers.forEach(item => {
     if (item.textContent === '.' && expression.includes('.')) 
       return;
 
+    if (+item.textContent > 0 && !expression.includes('.') && +expression === 0)
+      expression = '';
+
     if (item.textContent === '.' && expression.length === 0)
       expression = '0';
 
@@ -55,7 +58,7 @@ btnClear.addEventListener('click', () => {
     expression = expression.slice(0, expression.length - 1);
 
   if (expression.length === 0)
-    expression = '0'; 
+    expression = '0';
 
   showExpr.textContent = expression;
 });
