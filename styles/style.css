@@ -17,6 +17,7 @@
   --font-size-result: 36px;
   --font-size-btns: 30px;
   --grey: #bdc3c7;
+  --grey-light: #edc3c7;
   --gray-dark: #6c7a89;
   --creame: #f2f1ef;
   --orange: #ff4200;
@@ -78,6 +79,11 @@ button:hover {
   justify-content: space-evenly;
   padding: var(--standard-padding);
   background: rgba(0, 0, 0, 0.6);
+}
+
+.display .history {
+  color: var(--grey-light);
+  font-size: var(--font-size-large);
 }
 
 .display .expression {
