@@ -24,16 +24,17 @@ let currentInput = '';
 btnNumbers.forEach(item => {
   item.addEventListener('click', () => {
 
-    // numbers can't start with multiple zeros
-    if (+item.textContent === 0 && +currentInput === 0 && currentInput.length === 1) 
-      return;
+    // We should always take care of zeros. they can cause problems :)
+    if (+currentInput === 0) {
 
-    // Will remove default zero which is shown when input is empty
-    if (+item.textContent > 0 && !currentInput.includes('.') && +currentInput === 0)
-      currentInput = '';
+      // numbers can't start with multiple zeros
+      if (+item.textContent === 0 && currentInput.length === 1) return;
+
+      // Will remove default zero which is shown when input is empty
+      if (+item.textContent > 0 && !currentInput.includes('.')) currentInput = '';
+    }
 
     currentInput += item.textContent;
-
     showResult.textContent = currentInput;
   })
 });
