@@ -11,6 +11,7 @@ const btnPoint = document.querySelector('#btn-point')
 const btnReset = document.querySelector('#btn-reset');
 const btnClear = document.querySelector('#btn-clear');
 const btnEqual = document.querySelector('#btn-equal');
+const btnInverse = document.querySelector('#btn-inverse');
 
 const OPERATORS = ['+', '-', '×', '÷', '%', '+/-'];
 let history = '';
@@ -44,9 +45,9 @@ btnOperands.forEach(item => {
 
     if (!currentInput) return;
 
-    if (!expression) return;
-
     if (currentInput === '0') {
+
+      if (!expression) return;
 
       // get the last character of expression
       const lastChar = expression.charAt(expression.length - 1);
@@ -127,4 +128,12 @@ btnEqual.addEventListener('click', () => {
   result = 0;
   currentInput = '0';
   showHistory.textContent = history;
+});
+
+btnInverse.addEventListener('click', () => {
+
+  if (currentInput && +currentInput !== 0)
+    currentInput = +currentInput * -1;
+
+  showResult.textContent = currentInput;
 });
