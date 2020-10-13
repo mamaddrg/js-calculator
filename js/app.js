@@ -42,13 +42,17 @@ btnNumbers.forEach(item => {
 btnOperands.forEach(item => {
   item.addEventListener('click', () => {
 
+    if (!currentInput) return;
+
+    if (!expression) return;
+
     if (currentInput === '0') {
+
       // get the last character of expression
       const lastChar = expression.charAt(expression.length - 1);
 
-      // expresson can't contain 2 operators without a number between
+      // expression can't contain 2 operators without a number between
       if (OPERATORS.includes(lastChar)) {
-
         // remove last character to add the new one
         expression = expression.slice(0, -1);
 
@@ -92,7 +96,7 @@ btnReset.addEventListener('click', () => {
   currentInput = '';
   result = 0;
   lastResult = 0;
-  lastOperand = '';
+  lastOperand = '+';
 
   showExpr.textContent = expression;
   showResult.textContent = result;
@@ -114,13 +118,13 @@ btnEqual.addEventListener('click', () => {
   result = computer(lastResult, currentInput, lastOperand);
 
   expression = `${expression}${currentInput}=`;
-  showExpr.textContent = '';
   showResult.textContent = result;
+  showExpr.textContent = expression;
 
-  lastResult = result;
   history = expression + result;
   expression = '';
+  lastResult = 0;
   result = 0;
-  currentInput = '';
+  currentInput = '0';
   showHistory.textContent = history;
 });
