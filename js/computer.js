@@ -26,6 +26,7 @@ const computer = (num1, num2, operator) => {
 
     case '÷':
       result = +num1 / +num2;
+      result = result.toFixed(10);
       break;
 
     case '%':
