@@ -26,7 +26,7 @@ btnNumbers.forEach(item => {
   item.addEventListener('click', () => {
 
     // We should always take care of zeros. they can cause problems :)
-    if (+currentInput === 0) {
+    if (currentInput && +currentInput === 0) {
 
       // numbers can't start with multiple zeros
       if (+item.textContent === 0 && currentInput.length === 1) return;
